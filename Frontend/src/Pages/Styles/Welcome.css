@@ -1,0 +1,16 @@
+.welcome-page{
+  height: 100vh;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.welcome-button{
+  padding: 10px 50px;
+  font-weight: bold;
+  background-color: beige;
+  border: none;
+  border-radius: 10px;
+}
