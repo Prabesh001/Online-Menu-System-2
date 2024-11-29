@@ -9,7 +9,7 @@ app.use(cors({ origin: 'http://localhost:5173' })); // Allow requests from React
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/')
+mongoose.connect('mongodb+srv://shresthaniraj43:BMC%40123@tablemate.l4zz8.mongodb.net/Tablemate?retryWrites=true&w=majority&appName=TableMate')
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.log(err));
 
