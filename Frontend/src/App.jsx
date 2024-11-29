@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import FoodCategory from "./Pages/FoodCategory";
 import Login from "./Pages/Login";
@@ -12,22 +12,27 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function Layout() {
   const [cartItems, setCartItems] = useState([]);
-  const [cartVisible, setCartVisible] = useState(false); // State for toggling cart visibility
+  const [cartVisible, setCartVisible] = useState(false);
+  const location = useLocation(); // Get current route
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
   const toggleCart = () => {
-    setCartVisible((prev) => !prev); // Toggle cart visibility
+    setCartVisible((prev) => !prev);
   };
+
+  // Define which routes should not display Navbar, Footer, or Cart
+  const hideNavbarFooter = ["/", "/login"];
+  const hideCart = ["/", "/login", "/table"];
 
   return (
     <>
-      <Navbar />
+      {!hideNavbarFooter.includes(location.pathname) && <Navbar />}
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route
           path="/category/:category"
           element={<FoodCategory onAddToCart={addToCart} />}
@@ -35,9 +40,10 @@ function Layout() {
         <Route path="/login" element={<Login />} />
         <Route path="/table" element={<Table toggleCart={toggleCart} />} />
       </Routes>
-      {cartVisible && <Cart items={cartItems} />}{" "}
-      {/* Show cart if cartVisible is true */}
-      <Footer />
+      {!hideCart.includes(location.pathname) && cartVisible && (
+        <Cart items={cartItems} />
+      )}
+      {!hideNavbarFooter.includes(location.pathname) && <Footer />}
     </>
   );
 }
