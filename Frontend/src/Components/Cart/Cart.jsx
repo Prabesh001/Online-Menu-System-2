@@ -1,3 +1,11 @@
+import React from "react";
+import "./Cart.css"; // Create a separate CSS file for styling the cart modal
+
+function Cart() {
+  return <div className="cart-overlay">Cart</div>;
+}
+export default Cart;
+
 // import React from "react";
 // import "./Cart.css"; // Create a separate CSS file for styling the cart modal
 
@@ -27,10 +35,3 @@
 
 // export default Cart;
 
-import React from "react";
-import "./Cart.css"; // Create a separate CSS file for styling the cart modal
-
-function Cart() {
-  return <div className=".cart-overlay">Cart</div>;
-}
-export default Cart;

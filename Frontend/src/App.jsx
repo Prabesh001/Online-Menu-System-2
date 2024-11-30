@@ -14,9 +14,12 @@ function Layout() {
   const [cartItems, setCartItems] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
   const location = useLocation();
+  const [count, setCount] = useState(1) 
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
+    setCount(count=>count+1)
+    console.log("count")
   };
 
   const toggleCart = () => {
@@ -38,10 +41,9 @@ function Layout() {
           element={<FoodCategory onAddToCart={addToCart} />}
         />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/table" element={<Table toggleCart={toggleCart} />} /> */}
-        <Route path="/table" element={<Table/>} />
+        <Route path="/table" element={<Table value={count}/>} />
       </Routes>
-      {location.pathname === "/" || location.pathname === "/login" || location.pathname === "/table" ?  null : <Table />}
+      {location.pathname === "/" || location.pathname === "/login" || location.pathname === "/table" ?  null : <Table value={count}/>}
       {!hideNavbarFooter.includes(location.pathname) && <Footer />}
     </>
   );
