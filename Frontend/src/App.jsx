@@ -14,12 +14,17 @@ function Layout() {
   const [cartItems, setCartItems] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
   const location = useLocation();
-  const [count, setCount] = useState(1) 
+  const [count, setCount] = useState(Number(localStorage.getItem("count")) || 0);
+ 
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
-    setCount(count=>count+1)
-    console.log("count")
+
+    setCount((prevCount) => {
+      const newCount = prevCount + 1;
+      localStorage.setItem("count", newCount);
+      return newCount;
+    });
   };
 
   const toggleCart = () => {
