@@ -1,6 +1,7 @@
 import React from "react";
 import tableImage from "../Components/assets/Table.png"; // Add the image path
 import "./Styles/Table.css";
+
 function Table({ toggleCart }) {
   return (
     <div className="table-container">
@@ -10,6 +11,8 @@ function Table({ toggleCart }) {
         className="table-image"
         onClick={toggleCart} // Toggle cart visibility on image click
       />
+
+      <div className="counter">0</div>
     </div>
   );
 }
