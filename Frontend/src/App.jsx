@@ -7,24 +7,23 @@ import Table from "./Pages/Table";
 import Welcome from "./Pages/Welcome";
 import Navbar from "./Components/Navbar/index";
 import Footer from "./Components/Footer";
-// import Cart from "./Components/Cart/Cart";
+import Cart from "./Components/Cart/Cart";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function Layout() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("CartItems")) || []
+  );
   const [cartVisible, setCartVisible] = useState(false);
   const location = useLocation();
-  const [count, setCount] = useState(Number(localStorage.getItem("count")) || 0);
- 
+  const [count, setCount] = useState(
+    Number(localStorage.getItem("count")) || cartItems.length
+  );
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
-
-    setCount((prevCount) => {
-      const newCount = prevCount + 1;
-      localStorage.setItem("count", newCount);
-      return newCount;
-    });
+    localStorage.setItem("CartItems", JSON.stringify(cartItems));
+    console.log(cartItems);
   };
 
   const toggleCart = () => {
@@ -46,9 +45,13 @@ function Layout() {
           element={<FoodCategory onAddToCart={addToCart} />}
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/table" element={<Table value={count}/>} />
+        <Route path="/table" element={<Cart items={cartItems} />} />
       </Routes>
-      {location.pathname === "/" || location.pathname === "/login" || location.pathname === "/table" ?  null : <Table value={count}/>}
+      {location.pathname === "/" ||
+      location.pathname === "/login" ||
+      location.pathname === "/table" ? null : (
+        <Table value={count} />
+      )}
       {!hideNavbarFooter.includes(location.pathname) && <Footer />}
     </>
   );
