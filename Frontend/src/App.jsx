@@ -22,6 +22,7 @@ function Layout() {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
+    setCount(c=>cartItems.length)
     localStorage.setItem("CartItems", JSON.stringify(cartItems));
     console.log(cartItems);
   };
