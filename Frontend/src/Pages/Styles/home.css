@@ -5,7 +5,7 @@
 .menu-items{
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   margin-left: 10PX;
 }
 .discounted{
@@ -19,8 +19,8 @@
 
 .offer-photo{
   margin-bottom: 5px;
-  height: 230px;
-  width: 170px;
+  height: 270px;
+  width: 180px;
   border-radius: 5px;
   transform: scale(1);
   box-shadow: 3px 3px 5px gray;

@@ -11,11 +11,12 @@ function MenuSection({ title, category }) {
           .filter((item) => item.status.includes(category))
           .map((item) => (
             <div key={item.name} className="menu-item" title={item.details}>
+              <div className="menu-photo">
               <img src={item.photo} alt={item.name} className="offer-photo" />
+              </div>
               <h6 className="item-name" title={item.name}>
                 {item.name}
               </h6>
-              {/* <p>{item.details}</p> */}
               <del className="discounted"> Rs. {item.price.toFixed(2)}</del>
               {item.discountedPrice && (
                 <span>Rs. {item.discountedPrice.toFixed(2)}</span>
