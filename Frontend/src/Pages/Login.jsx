@@ -58,6 +58,7 @@ const LoginPage = () => {
           required
         />
         {isSignUp && (
+          <>
           <input
             type="password"
             name="confirmPassword"
@@ -67,6 +68,16 @@ const LoginPage = () => {
             className="input"
             required
           />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.formNumber}
+            onChange={handleInputChange}
+            className="input"
+            required
+          />
+          </>
         )}
         <button type="submit" className="button">
           {isSignUp ? "Sign Up" : "Sign In"}
