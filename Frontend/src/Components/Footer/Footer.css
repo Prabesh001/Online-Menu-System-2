@@ -3,4 +3,12 @@
   width: 100%;
   padding: 10px;
   padding-bottom: 0;
+  background-color: #f0620a;
+  color: white;
+  position: absolute;
+  /* bottom: 0; */
+}
+a{
+  color: beige;
+  text-decoration: none;
 }
