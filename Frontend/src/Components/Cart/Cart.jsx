@@ -5,15 +5,19 @@ function Cart({ items, setCartVisible }) {
   return (
     <div className="cart-overlay">
       <div className="cart-modal">
-        <h2>Your Cart</h2>
+        <h2>Your Cart</h2><hr />
         {items.length === 0 ? (
           <p>Your cart is empty!</p>
         ) : (
           <ul>
             {items.map((item, index) => (
+              <div className="itemInCart">
               <li key={index}>
                 {item.name} - Rs. {item.price.toFixed(2)}
               </li>
+              <button className="removeFromCart">x</button>
+              </div>
+              
             ))}
           </ul>
         )}
